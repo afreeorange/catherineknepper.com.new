@@ -1,0 +1,9 @@
+@use "sass:color";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+section:nth-of-type(2n) {
+  @apply bg-gray-300;
+}
