@@ -4,6 +4,25 @@
 @tailwind components;
 @tailwind utilities;
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Noe Display";
+}
+
+h1 {
+  @apply text-4xl font-bold;
+}
+
+h2 {
+  @apply text-2xl font-bold;
+}
+
+h3 {
+  @apply text-2xl italic;
+}
+
 section:nth-of-type(2n) {
-  @apply bg-gray-300;
+  @apply bg-gray-100;
 }
