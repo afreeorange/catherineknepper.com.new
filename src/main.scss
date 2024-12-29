@@ -4,6 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
+$color_background: #080f4f;
+$label_width: 20%;
+$MAX_WIDTH: "max-w-4xl";
+@mixin link {
+  a {
+    color: orange;
+  }
+}
+
+html,
+body {
+  background: $color_background;
+  color: white;
+  @apply scroll-smooth;
+}
+
 h1,
 h2,
 h3,
@@ -12,17 +28,205 @@ h4 {
 }
 
 h1 {
-  @apply text-4xl font-bold;
+  @apply font-bold;
 }
 
 h2 {
-  @apply text-2xl font-bold;
+  @apply text-3xl font-bold;
 }
 
 h3 {
-  @apply text-2xl italic;
+  @apply text-2xl;
+}
+
+.section-wrapper {
+  @apply px-12 py-12 border-t-4 border-double;
+}
+
+section {
+  @apply mx-auto;
+}
+
+/** -------- Navigation -------- */
+
+header {
+  @apply flex text-2xl p-4 w-full;
+  font-family: "Noe Display";
+}
+
+h1 {
+  @apply flex-1 uppercase;
+}
+
+nav {
+  ul {
+    @apply flex space-x-4;
+
+    li:not(:last-of-type)::after {
+      @apply inline-block opacity-25 ml-3;
+      content: "/";
+    }
+  }
+
+  a {
+    @apply transition-all duration-300;
+  }
+
+  a:hover {
+    color: #ff6600;
+  }
+}
+
+.section-wrapper {
+  border-color: #002f8f;
+}
+
+/** -------- Hello -------- */
+
+section[id="Hello"] {
+  font-family: "Noe Text";
+  @apply text-2xl;
+  @apply #{$MAX_WIDTH};
+
+  p {
+    @apply my-6;
+  }
+
+  p:nth-of-type(1) {
+    @apply text-5xl font-bold;
+    font-family: "Noe Display";
+    color: orange;
+  }
 }
 
 section:nth-of-type(2n) {
   @apply bg-gray-100;
 }
+
+/** -------- Contact -------- */
+
+section[id="Contact"] {
+  font-family: "Noe Display";
+  @apply #{$MAX_WIDTH};
+
+  h2 {
+    @apply text-center;
+  }
+
+  h3 {
+    @apply text-center;
+    color: #78cce3;
+  }
+
+  form {
+    @apply text-lg mt-10;
+
+    & > * {
+      @apply block;
+    }
+
+    label {
+      @apply grid grid-cols-2 my-4;
+      grid-template-columns: $label_width auto;
+
+      span {
+        @apply flex items-center;
+      }
+    }
+
+    input,
+    textarea {
+      font-family: "Noe Text";
+      @apply rounded-sm px-2 py-2 text-xl;
+      background: $color_background;
+      border: 1px solid #024668;
+    }
+
+    textarea {
+      @apply h-40;
+    }
+  }
+
+  button[type="submit"] {
+    @apply rounded-sm w-[80%] italic text-3xl py-2 transition-all duration-300;
+    background-color: #f30;
+    margin-left: $label_width;
+
+    &:hover {
+      background-color: #f90;
+    }
+  }
+}
+
+/** -------- Footer -------- */
+
+footer {
+  font-family: "Noe Display";
+  @apply mx-auto mb-24 opacity-40 text-right;
+  @apply #{$MAX_WIDTH};
+
+  p:nth-of-type(1) {
+    // @apply text-sm;
+  }
+
+  p:nth-of-type(2) {
+    @apply text-sm ;
+  }
+
+  p:nth-of-type(3) {
+    @apply hidden;
+  }
+}
+
+// /* Navigation inner container */
+// nav {
+//   @apply relative;
+// }
+
+// nav > div {
+//   @apply container mx-auto px-4;
+// }
+
+// /* Checkbox for mobile menu toggle */
+// nav input[type="checkbox"] {
+//   @apply hidden;
+// }
+
+// /* Burger menu label */
+// nav label {
+//   @apply cursor-pointer flex items-center p-4 lg:hidden;
+// }
+
+// /* Burger icon */
+// nav label span {
+//   @apply relative block w-6 h-0.5 bg-gray-600;
+// }
+
+// nav label span::before,
+// nav label span::after {
+//   @apply absolute left-0 block w-6 h-0.5 bg-gray-600 transition-all duration-200;
+//   content: "";
+// }
+
+// nav label span::before {
+//   @apply -top-2;
+// }
+
+// nav label span::after {
+//   @apply top-2;
+// }
+
+// /* Navigation list */
+// nav ul {
+//   @apply absolute w-full left-0 -top-96 invisible lg:visible lg:static lg:flex lg:space-x-8 lg:items-center transition-all duration-300 ease-in-out;
+// }
+
+// /* Show menu when checkbox is checked */
+// nav input[type="checkbox"]:checked ~ ul {
+//   @apply top-full visible;
+// }
+
+// /* Navigation links */
+// nav a {
+//   @apply block py-2 px-4 text-gray-700 hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-500 lg:p-0;
+// }

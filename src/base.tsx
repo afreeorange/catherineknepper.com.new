@@ -3,6 +3,7 @@ import { h, Fragment } from "preact";
 import packageJson from "../package.json";
 import Hello from "../content/Hello";
 import About from "../content/About";
+import Contact from "../content/Contact";
 
 const PROD_PREFIX = "";
 const SECTION_MAP = [
@@ -10,14 +11,14 @@ const SECTION_MAP = [
     label: "Hello",
     component: <Hello />,
   },
-  {
-    label: "Clients",
-    component: <Hello />,
-  },
-  {
-    label: "About",
-    component: <About />,
-  },
+  // {
+  //   label: "Clients",
+  //   component: <Hello />,
+  // },
+  // {
+  //   label: "About",
+  //   component: <About />,
+  // },
   {
     label: "Services",
     component: <Hello />,
@@ -28,7 +29,7 @@ const SECTION_MAP = [
   },
   {
     label: "Contact",
-    component: <Hello />,
+    component: <Contact />,
   },
 ];
 
@@ -86,28 +87,59 @@ export const Base = () => {
           <header>
             <h1>Catherine Knepper</h1>
             <nav>
-              <ul>
-                {SECTION_MAP.filter((_) => _.label !== "Hello").map(
-                  ({ label }) => (
-                    <li>
-                      <a href={`#${label}`} title={label}>
-                        {label}
-                      </a>
-                    </li>
-                  )
-                )}
-              </ul>
+              <div>
+                {/* <input type="checkbox" id="nav-toggle" />
+                <label for="nav-toggle">
+                  <span></span>
+                </label> */}
+                <ul>
+                  {SECTION_MAP.filter((_) => _.label !== "Hello").map(
+                    ({ label }) => (
+                      <li>
+                        <a href={`#${label}`} title={label}>
+                          {label}
+                        </a>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </div>
             </nav>
           </header>
 
           <main>
             {SECTION_MAP.map(({ label, component }) => (
-              <section id={label}>{component}</section>
+              <div class="section-wrapper">
+                <section id={label}>{component}</section>
+              </div>
             ))}
           </main>
 
           <footer>
-            v{packageJson.version}, built {new Date().toISOString()}
+            <p>
+              &copy; {new Date().getFullYear()} Catherine Knepper Writing
+              Services, LLC
+            </p>
+            <p>
+              Photo by my friend{" "}
+              <a
+                href="https://kathryngamble.com/"
+                title="Kathryn Gamble's portfolio"
+              >
+                Kathryn Gamble
+              </a>
+              . I respect your privacy and use{" "}
+              <a
+                href="https://plausible.io/"
+                title="Plausible.io, a privacy-friendly website analytics tool"
+              >
+                Plausible
+              </a>{" "}
+              for this website's analytics.
+            </p>
+            <p>
+              v{packageJson.version}, built {new Date().toISOString()}
+            </p>
           </footer>
         </div>
       </body>
